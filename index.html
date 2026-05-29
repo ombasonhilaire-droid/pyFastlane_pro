@@ -50,6 +50,39 @@
     a { color: inherit; text-decoration: none; }
     .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
 
+    /* Language Selector */
+    .lang-selector {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-btn {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .lang-btn.active {
+      background: var(--accent-yellow);
+      color: #000;
+      border-color: var(--accent-yellow);
+    }
+
     /* Header */
     header {
       position: sticky; 
@@ -423,6 +456,11 @@
       margin-top: 5px;
     }
 
+    /* Hidden by default */
+    .hidden {
+      display: none;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .grid-3 { 
@@ -451,6 +489,17 @@
 
       .form-container {
         padding: 20px;
+      }
+
+      .lang-selector {
+        top: 10px;
+        right: 10px;
+        gap: 6px;
+      }
+
+      .lang-btn {
+        padding: 6px 10px;
+        font-size: 11px;
       }
     }
 
@@ -507,6 +556,13 @@
 </head>
 <body>
 
+  <!-- Language Selector -->
+  <div class="lang-selector">
+    <button class="lang-btn active" onclick="setLanguage('en')" data-lang="en">EN</button>
+    <button class="lang-btn" onclick="setLanguage('fr')" data-lang="fr">FR</button>
+    <button class="lang-btn" onclick="setLanguage('es')" data-lang="es">ES</button>
+  </div>
+
   <header>
     <div class="container nav">
       <div class="brand">
@@ -514,11 +570,11 @@
         PyFastlane
       </div>
       <nav class="menu">
-        <a href="#features">Features</a>
-        <a href="#method">Method</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#features" data-i18n="nav-features">Features</a>
+        <a href="#method" data-i18n="nav-method">Method</a>
+        <a href="#pricing" data-i18n="nav-pricing">Pricing</a>
       </nav>
-      <a href="#signup" class="btn btn-primary">Free Trial</a>
+      <a href="#signup" class="btn btn-primary" data-i18n="btn-trial">Free Trial</a>
     </div>
   </header>
 
@@ -526,14 +582,14 @@
     <!-- HERO SECTION -->
     <section class="hero">
       <div class="container">
-        <div class="kicker">Learn to code. No fluff. Just results.</div>
-        <h1>Master Python. <br><span>Build your independence.</span></h1>
-        <p class="lead">
+        <div class="kicker" data-i18n="hero-kicker">Learn to code. No fluff. Just results.</div>
+        <h1><span data-i18n="hero-title-1">Master Python.</span> <br><span data-i18n="hero-title-2">Build your independence.</span></h1>
+        <p class="lead" data-i18n="hero-lead">
           No useless theory. Only concrete code to create applications, automate tasks, and dominate data science. Explore the platform free for 3 days.
         </p>
         <div class="hero-actions">
-          <a href="#signup" class="btn btn-primary">Start Your Free 3-Day Trial</a>
-          <a href="#features" class="btn btn-ghost">View Curriculum</a>
+          <a href="#signup" class="btn btn-primary" data-i18n="btn-start-trial">Start Your Free 3-Day Trial</a>
+          <a href="#features" class="btn btn-ghost" data-i18n="btn-curriculum">View Curriculum</a>
         </div>
       </div>
     </section>
@@ -542,24 +598,24 @@
     <section id="features">
       <div class="container">
         <div class="section-header">
-          <h2>Why This Platform?</h2>
-          <p>The "Fastlane" approach: Speed, Execution, Results.</p>
+          <h2 data-i18n="features-title">Why This Platform?</h2>
+          <p data-i18n="features-subtitle">The "Fastlane" approach: Speed, Execution, Results.</p>
         </div>
         <div class="grid-3">
           <div class="card">
             <div class="card-icon">🐍</div>
-            <h3>Pure Foundations</h3>
-            <p>Forget boring tutorials. Learn syntax, variables, and OOP (Object-Oriented Programming) through immediate practice and real-world examples.</p>
+            <h3 data-i18n="card1-title">Pure Foundations</h3>
+            <p data-i18n="card1-desc">Forget boring tutorials. Learn syntax, variables, and OOP (Object-Oriented Programming) through immediate practice and real-world examples.</p>
           </div>
           <div class="card">
             <div class="card-icon">⚙️</div>
-            <h3>Extreme Automation</h3>
-            <p>Web scraping, file manipulation, bots. Learn to write scripts that work for you 24/7. Build productivity tools that solve real problems.</p>
+            <h3 data-i18n="card2-title">Extreme Automation</h3>
+            <p data-i18n="card2-desc">Web scraping, file manipulation, bots. Learn to write scripts that work for you 24/7. Build productivity tools that solve real problems.</p>
           </div>
           <div class="card">
             <div class="card-icon">🚀</div>
-            <h3>Real-World Projects</h3>
-            <p>Build APIs, backends with Django/FastAPI, and concrete data analysis projects. Create a professional portfolio ready for employment.</p>
+            <h3 data-i18n="card3-title">Real-World Projects</h3>
+            <p data-i18n="card3-desc">Build APIs, backends with Django/FastAPI, and concrete data analysis projects. Create a professional portfolio ready for employment.</p>
           </div>
         </div>
       </div>
@@ -569,24 +625,24 @@
     <section id="method">
       <div class="container">
         <div class="section-header">
-          <h2>How It Works</h2>
-          <p>Learn by doing. No lectures, only practice.</p>
+          <h2 data-i18n="method-title">How It Works</h2>
+          <p data-i18n="method-subtitle">Learn by doing. No lectures, only practice.</p>
         </div>
         <div class="grid-3">
           <div class="card">
             <div class="card-icon">📚</div>
-            <h3>150+ HD Lessons</h3>
-            <p>Carefully curated video lessons covering everything from Python basics to advanced frameworks. Each lesson teaches a specific skill you can use immediately.</p>
+            <h3 data-i18n="card4-title">150+ HD Lessons</h3>
+            <p data-i18n="card4-desc">Carefully curated video lessons covering everything from Python basics to advanced frameworks. Each lesson teaches a specific skill you can use immediately.</p>
           </div>
           <div class="card">
             <div class="card-icon">💻</div>
-            <h3>Integrated Code Editor</h3>
-            <p>No setup required. Write and execute Python code directly in your browser. Practice instantly without installing anything on your computer.</p>
+            <h3 data-i18n="card5-title">Integrated Code Editor</h3>
+            <p data-i18n="card5-desc">No setup required. Write and execute Python code directly in your browser. Practice instantly without installing anything on your computer.</p>
           </div>
           <div class="card">
             <div class="card-icon">🤖</div>
-            <h3>AI-Powered Feedback</h3>
-            <p>Get instant corrections on your exercises. Our AI reviews your code and provides personalized suggestions for improvement and best practices.</p>
+            <h3 data-i18n="card6-title">AI-Powered Feedback</h3>
+            <p data-i18n="card6-desc">Get instant corrections on your exercises. Our AI reviews your code and provides personalized suggestions for improvement and best practices.</p>
           </div>
         </div>
       </div>
@@ -596,32 +652,32 @@
     <section id="pricing">
       <div class="container">
         <div class="section-header">
-          <h2>Complete Access. No Lock-In.</h2>
-          <p>Test everything risk-free. Decide after.</p>
+          <h2 data-i18n="pricing-title">Complete Access. No Lock-In.</h2>
+          <p data-i18n="pricing-subtitle">Test everything risk-free. Decide after.</p>
         </div>
 
         <div class="pricing-box">
-          <div class="pricing-badge">Popular</div>
-          <h3 style="margin: 0; color: var(--accent-blue); text-transform: uppercase; font-size: 16px;">Unlimited Pass</h3>
-          <div class="price-amount">$29 <span>/ month</span></div>
-          <p style="color: var(--muted); margin-top: 0;">After your free 3-day trial.</p>
+          <div class="pricing-badge" data-i18n="pricing-badge">Popular</div>
+          <h3 style="margin: 0; color: var(--accent-blue); text-transform: uppercase; font-size: 16px;" data-i18n="pricing-plan">Unlimited Pass</h3>
+          <div class="price-amount">$29 <span data-i18n="price-month">/ month</span></div>
+          <p style="color: var(--muted); margin-top: 0;" data-i18n="price-after-trial">After your free 3-day trial.</p>
           
           <ul class="features-list">
-            <li>Instant access to 150+ HD video lessons</li>
-            <li>Integrated code environment (no installation needed)</li>
-            <li>AI-powered exercise correction and feedback</li>
-            <li>Private Discord community for networking</li>
-            <li>Professional completion certificate</li>
-            <li>Lifetime access to course materials</li>
-            <li>Monthly live Q&A sessions with instructors</li>
+            <li data-i18n="feature1">Instant access to 150+ HD video lessons</li>
+            <li data-i18n="feature2">Integrated code environment (no installation needed)</li>
+            <li data-i18n="feature3">AI-powered exercise correction and feedback</li>
+            <li data-i18n="feature4">Private Discord community for networking</li>
+            <li data-i18n="feature5">Professional completion certificate</li>
+            <li data-i18n="feature6">Lifetime access to course materials</li>
+            <li data-i18n="feature7">Monthly live Q&A sessions with instructors</li>
           </ul>
 
           <div class="payment-methods">
-            <p>Payment Methods Accepted After Trial</p>
+            <p data-i18n="payment-methods">Payment Methods Accepted After Trial</p>
             <div class="pay-icons">
-              <span class="pay-tag">💳 Credit Card</span>
-              <span class="pay-tag">📱 Mobile Money</span>
-              <span class="pay-tag">🅿️ PayPal</span>
+              <span class="pay-tag">💳 <span data-i18n="pay-card">Credit Card</span></span>
+              <span class="pay-tag">📱 <span data-i18n="pay-mobile">Mobile Money</span></span>
+              <span class="pay-tag">🅿️ <span data-i18n="pay-paypal">PayPal</span></span>
             </div>
           </div>
         </div>
@@ -632,14 +688,14 @@
     <section id="signup" style="border-bottom: none;">
       <div class="container" style="text-align: center;">
         <div class="section-header">
-          <h2>Ready to Level Up?</h2>
-          <p>Create your account now and unlock your free 3-day trial immediately.</p>
+          <h2 data-i18n="signup-title">Ready to Level Up?</h2>
+          <p data-i18n="signup-subtitle">Create your account now and unlock your free 3-day trial immediately.</p>
         </div>
 
         <div class="form-container">
           <form id="signupForm" name="signupForm" method="POST" novalidate>
             <div class="form-group">
-              <label for="fullName">Full Name</label>
+              <label for="fullName" data-i18n="label-name">Full Name</label>
               <input 
                 type="text" 
                 id="fullName" 
@@ -651,7 +707,7 @@
             </div>
 
             <div class="form-group">
-              <label for="email">Email Address</label>
+              <label for="email" data-i18n="label-email">Email Address</label>
               <input 
                 type="email" 
                 id="email" 
@@ -663,23 +719,23 @@
             </div>
 
             <div class="form-group">
-              <label for="password">Password</label>
+              <label for="password" data-i18n="label-password">Password</label>
               <input 
                 type="password" 
                 id="password" 
                 name="password"
-                placeholder="•���••••••" 
+                placeholder="••••••••" 
                 required
                 minlength="8"
                 aria-required="true"
               >
             </div>
             
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;" data-i18n="btn-activate">
               Activate My 3-Day Free Trial
             </button>
 
-            <p class="form-disclaimer">
+            <p class="form-disclaimer" data-i18n="disclaimer">
               By clicking, you'll be redirected to our secure payment portal to set up your billing method (Credit Card, PayPal, or Mobile Money). <strong>No charges will be made until after your 3-day free trial ends.</strong> You can cancel anytime before the trial ends to avoid any charges.
             </p>
           </form>
@@ -691,12 +747,204 @@
   <footer>
     <div class="container">
       <div class="logo">Py</div>
-      <div>&copy; <span id="year"></span> PyFastlane. All rights reserved.</div>
-      <p>Transform your free time into monetizable skills.</p>
+      <div>&copy; <span id="year"></span> PyFastlane. <span data-i18n="footer-rights">All rights reserved.</span></div>
+      <p data-i18n="footer-tagline">Transform your free time into monetizable skills.</p>
     </div>
   </footer>
 
   <script>
+    // Internationalization (i18n) translations
+    const translations = {
+      en: {
+        "nav-features": "Features",
+        "nav-method": "Method",
+        "nav-pricing": "Pricing",
+        "btn-trial": "Free Trial",
+        "hero-kicker": "Learn to code. No fluff. Just results.",
+        "hero-title-1": "Master Python.",
+        "hero-title-2": "Build your independence.",
+        "hero-lead": "No useless theory. Only concrete code to create applications, automate tasks, and dominate data science. Explore the platform free for 3 days.",
+        "btn-start-trial": "Start Your Free 3-Day Trial",
+        "btn-curriculum": "View Curriculum",
+        "features-title": "Why This Platform?",
+        "features-subtitle": "The \"Fastlane\" approach: Speed, Execution, Results.",
+        "card1-title": "Pure Foundations",
+        "card1-desc": "Forget boring tutorials. Learn syntax, variables, and OOP (Object-Oriented Programming) through immediate practice and real-world examples.",
+        "card2-title": "Extreme Automation",
+        "card2-desc": "Web scraping, file manipulation, bots. Learn to write scripts that work for you 24/7. Build productivity tools that solve real problems.",
+        "card3-title": "Real-World Projects",
+        "card3-desc": "Build APIs, backends with Django/FastAPI, and concrete data analysis projects. Create a professional portfolio ready for employment.",
+        "method-title": "How It Works",
+        "method-subtitle": "Learn by doing. No lectures, only practice.",
+        "card4-title": "150+ HD Lessons",
+        "card4-desc": "Carefully curated video lessons covering everything from Python basics to advanced frameworks. Each lesson teaches a specific skill you can use immediately.",
+        "card5-title": "Integrated Code Editor",
+        "card5-desc": "No setup required. Write and execute Python code directly in your browser. Practice instantly without installing anything on your computer.",
+        "card6-title": "AI-Powered Feedback",
+        "card6-desc": "Get instant corrections on your exercises. Our AI reviews your code and provides personalized suggestions for improvement and best practices.",
+        "pricing-title": "Complete Access. No Lock-In.",
+        "pricing-subtitle": "Test everything risk-free. Decide after.",
+        "pricing-badge": "Popular",
+        "pricing-plan": "Unlimited Pass",
+        "price-month": "/ month",
+        "price-after-trial": "After your free 3-day trial.",
+        "feature1": "Instant access to 150+ HD video lessons",
+        "feature2": "Integrated code environment (no installation needed)",
+        "feature3": "AI-powered exercise correction and feedback",
+        "feature4": "Private Discord community for networking",
+        "feature5": "Professional completion certificate",
+        "feature6": "Lifetime access to course materials",
+        "feature7": "Monthly live Q&A sessions with instructors",
+        "payment-methods": "Payment Methods Accepted After Trial",
+        "pay-card": "Credit Card",
+        "pay-mobile": "Mobile Money",
+        "pay-paypal": "PayPal",
+        "signup-title": "Ready to Level Up?",
+        "signup-subtitle": "Create your account now and unlock your free 3-day trial immediately.",
+        "label-name": "Full Name",
+        "label-email": "Email Address",
+        "label-password": "Password",
+        "btn-activate": "Activate My 3-Day Free Trial",
+        "disclaimer": "By clicking, you'll be redirected to our secure payment portal to set up your billing method (Credit Card, PayPal, or Mobile Money). <strong>No charges will be made until after your 3-day free trial ends.</strong> You can cancel anytime before the trial ends to avoid any charges.",
+        "footer-rights": "All rights reserved.",
+        "footer-tagline": "Transform your free time into monetizable skills."
+      },
+      fr: {
+        "nav-features": "Fonctionnalités",
+        "nav-method": "Méthode",
+        "nav-pricing": "Tarification",
+        "btn-trial": "Essai Gratuit",
+        "hero-kicker": "Apprendre à coder. Sans blabla. Que des résultats.",
+        "hero-title-1": "Maîtrise Python.",
+        "hero-title-2": "Construis ton indépendance.",
+        "hero-lead": "Pas de théorie inutile. Que du code concret pour créer des applications, automatiser des tâches et dominer la science des données. Explore la plateforme gratuitement pendant 3 jours.",
+        "btn-start-trial": "Commence ton essai gratuit de 3 jours",
+        "btn-curriculum": "Voir le programme",
+        "features-title": "Pourquoi cette plateforme ?",
+        "features-subtitle": "L'approche \"Fastlane\" : Vitesse, Exécution, Résultats.",
+        "card1-title": "Les Fondations Pures",
+        "card1-desc": "Oublie les tutoriels ennuyeux. Apprends la syntaxe, les variables et la POO (Programmation Orientée Objet) par la pratique immédiate et des exemples concrets.",
+        "card2-title": "Automatisation Extrême",
+        "card2-desc": "Web scraping, manipulation de fichiers, bots. Apprends à écrire des scripts qui travaillent pour toi 24h/24. Crée des outils de productivité qui résolvent de vrais problèmes.",
+        "card3-title": "Projets Réels",
+        "card3-desc": "Développe des API, des back-ends avec Django/FastAPI et des projets d'analyse de données concrets. Crée un portefeuille professionnel prêt pour l'emploi.",
+        "method-title": "Comment ça marche",
+        "method-subtitle": "Apprends en faisant. Pas de cours, que de la pratique.",
+        "card4-title": "150+ Leçons en HD",
+        "card4-desc": "Des leçons vidéo soigneusement sélectionnées couvrant tout, des bases de Python aux frameworks avancés. Chaque leçon enseigne une compétence spécifique que tu peux utiliser immédiatement.",
+        "card5-title": "Éditeur de Code Intégré",
+        "card5-desc": "Aucune installation requise. Écris et exécute du code Python directement dans ton navigateur. Pratique instantanément sans installer quoi que ce soit sur ton ordinateur.",
+        "card6-title": "Retours Alimentés par l'IA",
+        "card6-desc": "Obtiens des corrections instantanées sur tes exercices. Notre IA examine ton code et fournit des suggestions personnalisées pour amélioration et les meilleures pratiques.",
+        "pricing-title": "Accès Complet. Sans Engagement.",
+        "pricing-subtitle": "Teste tout sans risque. Décide ensuite.",
+        "pricing-badge": "Populaire",
+        "pricing-plan": "Pass Illimité",
+        "price-month": "/ mois",
+        "price-after-trial": "Après ton essai gratuit de 3 jours.",
+        "feature1": "Accès instantané à plus de 150 leçons vidéo HD",
+        "feature2": "Environnement de code intégré (aucune installation)",
+        "feature3": "Correction d'exercices alimentée par l'IA et retours",
+        "feature4": "Communauté privée Discord pour le réseautage",
+        "feature5": "Certificat de réussite professionnel",
+        "feature6": "Accès à vie aux matériaux du cours",
+        "feature7": "Sessions mensuelles de Q&A en direct avec les instructeurs",
+        "payment-methods": "Moyens de Paiement Acceptés Après l'Essai",
+        "pay-card": "Carte Bancaire",
+        "pay-mobile": "Mobile Money",
+        "pay-paypal": "PayPal",
+        "signup-title": "Prêt à passer au niveau supérieur ?",
+        "signup-subtitle": "Crée ton compte maintenant et débloque ton essai gratuit de 3 jours immédiatement.",
+        "label-name": "Nom Complet",
+        "label-email": "Adresse Email",
+        "label-password": "Mot de passe",
+        "btn-activate": "Activer Mon Essai Gratuit de 3 Jours",
+        "disclaimer": "En cliquant, tu seras redirigé vers notre portail de paiement sécurisé pour configurer ta méthode de facturation (Carte Bancaire, PayPal ou Mobile Money). <strong>Aucun prélèvement ne sera effectué avant la fin de ton essai gratuit de 3 jours.</strong> Tu peux annuler à tout moment avant la fin de l'essai pour éviter tout prélèvement.",
+        "footer-rights": "Tous droits réservés.",
+        "footer-tagline": "Transforme ton temps libre en compétences monétisables."
+      },
+      es: {
+        "nav-features": "Características",
+        "nav-method": "Método",
+        "nav-pricing": "Precios",
+        "btn-trial": "Prueba Gratuita",
+        "hero-kicker": "Aprende a programar. Sin tonterías. Solo resultados.",
+        "hero-title-1": "Domina Python.",
+        "hero-title-2": "Construye tu independencia.",
+        "hero-lead": "Sin teoría inútil. Solo código concreto para crear aplicaciones, automatizar tareas y dominar la ciencia de datos. Explora la plataforma de forma gratuita durante 3 días.",
+        "btn-start-trial": "Comienza tu Prueba Gratuita de 3 Días",
+        "btn-curriculum": "Ver Currículum",
+        "features-title": "¿Por Qué Esta Plataforma?",
+        "features-subtitle": "El enfoque \"Fastlane\": Velocidad, Ejecución, Resultados.",
+        "card1-title": "Fundamentos Puros",
+        "card1-desc": "Olvida los tutoriales aburridos. Aprende sintaxis, variables y POO (Programación Orientada a Objetos) a través de la práctica inmediata y ejemplos del mundo real.",
+        "card2-title": "Automatización Extrema",
+        "card2-desc": "Web scraping, manipulación de archivos, bots. Aprende a escribir scripts que trabajen para ti 24/7. Crea herramientas de productividad que resuelvan problemas reales.",
+        "card3-title": "Proyectos del Mundo Real",
+        "card3-desc": "Construye APIs, backends con Django/FastAPI y proyectos concretos de análisis de datos. Crea un portafolio profesional listo para el empleo.",
+        "method-title": "Cómo Funciona",
+        "method-subtitle": "Aprende haciendo. Sin conferencias, solo práctica.",
+        "card4-title": "150+ Lecciones en HD",
+        "card4-desc": "Lecciones de video cuidadosamente seleccionadas que cubren todo, desde lo básico de Python hasta frameworks avanzados. Cada lección enseña una habilidad específica que puedes usar inmediatamente.",
+        "card5-title": "Editor de Código Integrado",
+        "card5-desc": "Sin configuración requerida. Escribe y ejecuta código Python directamente en tu navegador. Practica instantáneamente sin instalar nada en tu computadora.",
+        "card6-title": "Retroalimentación Impulsada por IA",
+        "card6-desc": "Obtén correcciones instantáneas en tus ejercicios. Nuestra IA revisa tu código y proporciona sugerencias personalizadas para mejora y mejores prácticas.",
+        "pricing-title": "Acceso Completo. Sin Vinculación.",
+        "pricing-subtitle": "Prueba todo sin riesgo. Decide después.",
+        "pricing-badge": "Popular",
+        "pricing-plan": "Pase Ilimitado",
+        "price-month": "/ mes",
+        "price-after-trial": "Después de tu prueba gratuita de 3 días.",
+        "feature1": "Acceso instantáneo a más de 150 lecciones de video HD",
+        "feature2": "Entorno de código integrado (sin instalación requerida)",
+        "feature3": "Corrección de ejercicios impulsada por IA y retroalimentación",
+        "feature4": "Comunidad privada de Discord para redes",
+        "feature5": "Certificado de finalización profesional",
+        "feature6": "Acceso de por vida a materiales del curso",
+        "feature7": "Sesiones mensuales de preguntas y respuestas en vivo con instructores",
+        "payment-methods": "Métodos de Pago Aceptados Después de la Prueba",
+        "pay-card": "Tarjeta de Crédito",
+        "pay-mobile": "Mobile Money",
+        "pay-paypal": "PayPal",
+        "signup-title": "¿Listo para Subir de Nivel?",
+        "signup-subtitle": "Crea tu cuenta ahora y desbloquea tu prueba gratuita de 3 días inmediatamente.",
+        "label-name": "Nombre Completo",
+        "label-email": "Dirección de Correo Electrónico",
+        "label-password": "Contraseña",
+        "btn-activate": "Activar Mi Prueba Gratuita de 3 Días",
+        "disclaimer": "Al hacer clic, serás redirigido a nuestro portal de pago seguro para configurar tu método de facturación (Tarjeta de Crédito, PayPal o Mobile Money). <strong>No se realizarán cargos hasta después de que finalice tu prueba gratuita de 3 días.</strong> Puedes cancelar en cualquier momento antes de que termine la prueba para evitar cargos.",
+        "footer-rights": "Todos los derechos reservados.",
+        "footer-tagline": "Transforma tu tiempo libre en habilidades monetizables."
+      }
+    };
+
+    // Set language function
+    function setLanguage(lang) {
+      localStorage.setItem('preferred-language', lang);
+      
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+      
+      // Update all elements with data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+    }
+
+    // Initialize
+    const savedLang = localStorage.getItem('preferred-language') || 'en';
+    setLanguage(savedLang);
+
     // Auto-update year
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -730,6 +978,7 @@
       // Disable submit button
       const submitBtn = signupForm.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
       submitBtn.textContent = 'Processing...';
 
       try {
@@ -745,7 +994,6 @@
             password
           })
         }).catch(() => {
-          // Fallback for demo purposes
           throw new Error('Unable to connect. Please try again.');
         });
 
@@ -757,15 +1005,12 @@
         
         alert(`Welcome, ${fullName}!\n\nYour trial account is being created.\n\nYou will be redirected to our secure payment portal to set up your billing method. No charges will be made during your 3-day free trial.`);
         
-        // Redirect to checkout (uncomment when backend is ready)
-        // window.location.href = data.checkoutUrl || "https://checkout.pyfastlane.com/trial";
-        
         signupForm.reset();
       } catch (error) {
         alert(`Error: ${error.message}`);
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Activate My 3-Day Free Trial';
+        submitBtn.textContent = originalText;
       }
     });
 
