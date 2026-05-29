@@ -1,6 +1,16 @@
-Bonjour ! 
-c'est Ombason Hilaire programmeur Python .
-Notre mission est simple et claire. 
-Ce site web est conçu pour permettre aux étudiants et particuliers d'apprendre python efficacement sans jargon inutile.
-pour tout contact : ombasonhilaire@gmail.com 
-whatsapp : +243 0810402480.
+# 🐍 PyFastlane — Master Python the Right Way
+
+**Hey!** I'm Ombason Hilaire, a Python developer.
+
+## 🎯 Our Mission
+Simple and clear: **Make Python learning accessible, practical, and jargon-free.**
+
+This platform is built for students and professionals who want to code efficiently without wasting time on unnecessary theory.
+
+## 📞 Get in Touch
+- 📧 **Email:** ombasonhilaire@gmail.com  
+- 📱 **WhatsApp:** +243 0810402480
+
+---
+
+**Ready to level up your Python skills?** Start your free 3-day trial today! 🚀
