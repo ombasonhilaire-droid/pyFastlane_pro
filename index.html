@@ -1,29 +1,36 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Apprenez Python sans blabla. Commencez votre essai gratuit de 3 jours. Plateforme d'excellence pour maîtriser le code." />
-  <title>PyFastlane — L'Excellence Python</title>
+  <meta name="description" content="Learn Python without the fluff. Start your free 3-day trial. The excellence platform to master code." />
+  <meta name="theme-color" content="#0a0a0c" />
+  <meta name="og:title" content="PyFastlane — Python Excellence" />
+  <meta name="og:description" content="Learn Python without the fluff. Start your free 3-day trial." />
+  <meta name="og:type" content="website" />
+  <title>PyFastlane — Python Excellence</title>
 
-  <!-- Polices professionnelles : Montserrat (Titres) et Inter (Corps de texte) -->
+  <!-- Professional Fonts: Montserrat (Headings) and Inter (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect fill='%233b82f6' width='40' height='40' rx='8'/><text x='50%' y='50%' font-size='24' font-weight='900' fill='%23f59e0b' text-anchor='middle' dominant-baseline='middle' font-family='Arial'>Py</text></svg>">
+
   <style>
     :root {
-      /* Couleurs inspirées de Python et du style "Fastlane" (Haut contraste, Premium) */
+      /* Colors inspired by Python and "Fastlane" style (High contrast, Premium) */
       --bg: #0a0a0c;
       --card: #141418;
       --muted: #8a8f98;
       --text: #ffffff;
-      --accent-blue: #3b82f6; /* Bleu Python */
-      --accent-yellow: #f59e0b; /* Jaune Python / Or */
-      --ok: #10b981;
+      --accent-blue: #3b82f6;
+      --accent-yellow: #f59e0b;
+      --accent-green: #10b981;
       --shadow: 0 20px 40px rgba(0,0,0,0.4);
       --radius: 12px;
-      --max: 1100px;
+      --max-width: 1100px;
     }
 
     * { box-sizing: border-box; }
@@ -41,144 +48,460 @@
     }
 
     a { color: inherit; text-decoration: none; }
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
 
     /* Header */
     header {
-      position: sticky; top: 0; z-index: 50;
+      position: sticky; 
+      top: 0; 
+      z-index: 50;
       backdrop-filter: blur(12px);
       background: rgba(10, 10, 12, 0.85);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
+
     .nav {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
       padding: 16px 0;
     }
+
     .brand {
-      display: flex; align-items: center; gap: 12px;
-      font-weight: 900; font-size: 20px; text-transform: uppercase; letter-spacing: -0.5px;
+      display: flex; 
+      align-items: center; 
+      gap: 12px;
+      font-weight: 900; 
+      font-size: 20px; 
+      text-transform: uppercase; 
+      letter-spacing: -0.5px;
     }
+
     .logo {
-      width: 40px; height: 40px; border-radius: 8px;
+      width: 40px; 
+      height: 40px; 
+      border-radius: 8px;
       background: linear-gradient(135deg, var(--accent-blue), var(--accent-yellow));
-      display: grid; place-items: center;
-      color: #000; font-weight: 900; font-size: 18px;
+      display: grid; 
+      place-items: center;
+      color: #000; 
+      font-weight: 900; 
+      font-size: 18px;
     }
-    .menu { display: flex; gap: 20px; }
+
+    .menu { 
+      display: flex; 
+      gap: 20px; 
+    }
+
     .menu a {
-      color: var(--muted); font-weight: 600; font-size: 14px;
+      color: var(--muted); 
+      font-weight: 600; 
+      font-size: 14px;
       transition: color 0.2s;
     }
-    .menu a:hover { color: var(--text); }
+
+    .menu a:hover { 
+      color: var(--text); 
+    }
 
     .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: 8px; padding: 14px 24px; border-radius: 8px;
-      font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;
-      cursor: pointer; transition: all 0.2s ease; border: none;
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center;
+      gap: 8px; 
+      padding: 14px 24px; 
+      border-radius: 8px;
+      font-weight: 800; 
+      font-size: 14px; 
+      text-transform: uppercase; 
+      letter-spacing: 0.5px;
+      cursor: pointer; 
+      transition: all 0.2s ease; 
+      border: none;
     }
+
     .btn-ghost {
-      background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.1);
+      background: transparent; 
+      color: var(--text); 
+      border: 1px solid rgba(255,255,255,0.1);
     }
-    .btn-ghost:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
+
+    .btn-ghost:hover { 
+      background: rgba(255,255,255,0.05); 
+      border-color: rgba(255,255,255,0.2); 
+    }
+
     .btn-primary {
-      background: var(--accent-yellow); color: #000;
+      background: var(--accent-yellow); 
+      color: #000;
       box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
     }
-    .btn-primary:hover { background: #fbbf24; transform: translateY(-2px); }
 
-    /* Hero */
-    .hero { padding: 80px 0 40px; text-align: center; }
-    .kicker {
-      display: inline-block; padding: 6px 14px; border-radius: 50px;
-      background: rgba(59, 130, 246, 0.1); color: var(--accent-blue);
-      font-weight: 700; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
-      margin-bottom: 20px; border: 1px solid rgba(59, 130, 246, 0.2);
+    .btn-primary:hover { 
+      background: #fbbf24; 
+      transform: translateY(-2px); 
     }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    /* Hero Section */
+    .hero { 
+      padding: 80px 0 40px; 
+      text-align: center; 
+    }
+
+    .kicker {
+      display: inline-block; 
+      padding: 6px 14px; 
+      border-radius: 50px;
+      background: rgba(59, 130, 246, 0.1); 
+      color: var(--accent-blue);
+      font-weight: 700; 
+      font-size: 12px; 
+      letter-spacing: 1px; 
+      text-transform: uppercase;
+      margin-bottom: 20px; 
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
     h1 {
-      font-size: clamp(36px, 5vw, 64px); line-height: 1.1; letter-spacing: -1px;
+      font-size: clamp(36px, 5vw, 64px); 
+      line-height: 1.1; 
+      letter-spacing: -1px;
       margin: 0 0 20px;
     }
+
     h1 span {
       background: linear-gradient(to right, var(--accent-blue), var(--accent-yellow));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
+
     .lead {
-      font-size: 18px; color: var(--muted); max-width: 700px; margin: 0 auto 40px;
+      font-size: 18px; 
+      color: var(--muted); 
+      max-width: 700px; 
+      margin: 0 auto 40px;
     }
-    .hero-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
 
-    /* Section Features / Methods */
-    section { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); }
-    .section-header { text-align: center; margin-bottom: 50px; }
-    .section-header h2 { font-size: 32px; margin: 0 0 10px; }
-    .section-header p { color: var(--muted); margin: 0; }
+    .hero-actions { 
+      display: flex; 
+      justify-content: center; 
+      gap: 16px; 
+      flex-wrap: wrap; 
+    }
 
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    /* Sections */
+    section { 
+      padding: 60px 0; 
+      border-top: 1px solid rgba(255,255,255,0.05); 
+    }
+
+    .section-header { 
+      text-align: center; 
+      margin-bottom: 50px; 
+    }
+
+    .section-header h2 { 
+      font-size: 32px; 
+      margin: 0 0 10px; 
+    }
+
+    .section-header p { 
+      color: var(--muted); 
+      margin: 0; 
+    }
+
+    /* Grid Layout */
+    .grid-3 { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 24px; 
+    }
+
     .card {
-      background: var(--card); border: 1px solid rgba(255,255,255,0.05);
-      border-radius: var(--radius); padding: 30px;
-      box-shadow: var(--shadow); transition: transform 0.2s;
+      background: var(--card); 
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius); 
+      padding: 30px;
+      box-shadow: var(--shadow); 
+      transition: transform 0.2s, border-color 0.2s;
     }
-    .card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.1); }
-    .card-icon {
-      width: 50px; height: 50px; border-radius: 10px; margin-bottom: 20px;
-      display: grid; place-items: center; font-size: 24px;
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
-    }
-    .card h3 { margin: 0 0 12px; font-size: 20px; }
-    .card p { color: var(--muted); font-size: 15px; margin: 0; }
 
-    /* Pricing & Trial */
+    .card:hover { 
+      transform: translateY(-5px); 
+      border-color: rgba(255,255,255,0.1); 
+    }
+
+    .card-icon {
+      width: 50px; 
+      height: 50px; 
+      border-radius: 10px; 
+      margin-bottom: 20px;
+      display: grid; 
+      place-items: center; 
+      font-size: 24px;
+      background: rgba(255,255,255,0.03); 
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .card h3 { 
+      margin: 0 0 12px; 
+      font-size: 20px; 
+    }
+
+    .card p { 
+      color: var(--muted); 
+      font-size: 15px; 
+      margin: 0; 
+    }
+
+    /* Pricing Section */
     .pricing-box {
       background: linear-gradient(180deg, var(--card), #0a0a0c);
       border: 1px solid var(--accent-blue);
-      border-radius: 16px; padding: 40px; max-width: 600px; margin: 0 auto;
-      text-align: center; position: relative; overflow: hidden;
+      border-radius: 16px; 
+      padding: 40px; 
+      max-width: 600px; 
+      margin: 0 auto;
+      text-align: center; 
+      position: relative; 
+      overflow: hidden;
     }
-    .pricing-badge {
-      position: absolute; top: 16px; right: -30px; background: var(--accent-yellow);
-      color: #000; font-weight: 800; font-size: 12px; padding: 4px 40px;
-      transform: rotate(45deg); text-transform: uppercase;
-    }
-    .price-amount { font-family: 'Montserrat', sans-serif; font-size: 56px; font-weight: 900; line-height: 1; margin: 20px 0; }
-    .price-amount span { font-size: 20px; color: var(--muted); font-weight: 500; }
-    .features-list { text-align: left; margin: 30px 0; padding: 0; list-style: none; }
-    .features-list li { margin-bottom: 12px; display: flex; gap: 10px; align-items: center; color: #ddd; }
-    .features-list li::before { content: "✓"; color: var(--ok); font-weight: bold; }
 
-    /* Payments Logos */
-    .payment-methods {
-      margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);
+    .pricing-badge {
+      position: absolute; 
+      top: 16px; 
+      right: -30px; 
+      background: var(--accent-yellow);
+      color: #000; 
+      font-weight: 800; 
+      font-size: 12px; 
+      padding: 4px 40px;
+      transform: rotate(45deg); 
+      text-transform: uppercase;
     }
-    .payment-methods p { font-size: 13px; color: var(--muted); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;}
-    .pay-icons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+
+    .price-amount { 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 56px; 
+      font-weight: 900; 
+      line-height: 1; 
+      margin: 20px 0; 
+    }
+
+    .price-amount span { 
+      font-size: 20px; 
+      color: var(--muted); 
+      font-weight: 500; 
+    }
+
+    .features-list { 
+      text-align: left; 
+      margin: 30px 0; 
+      padding: 0; 
+      list-style: none; 
+    }
+
+    .features-list li { 
+      margin-bottom: 12px; 
+      display: flex; 
+      gap: 10px; 
+      align-items: center; 
+      color: #ddd; 
+    }
+
+    .features-list li::before { 
+      content: "✓"; 
+      color: var(--accent-green); 
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    /* Payment Methods */
+    .payment-methods {
+      margin-top: 30px; 
+      padding-top: 20px; 
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .payment-methods p { 
+      font-size: 13px; 
+      color: var(--muted); 
+      margin-bottom: 15px; 
+      text-transform: uppercase; 
+      letter-spacing: 1px; 
+      font-weight: 600;
+    }
+
+    .pay-icons { 
+      display: flex; 
+      justify-content: center; 
+      gap: 15px; 
+      flex-wrap: wrap; 
+    }
+
     .pay-tag {
-      padding: 8px 16px; border-radius: 6px; background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1); font-size: 12px; font-weight: 600;
+      padding: 8px 16px; 
+      border-radius: 6px; 
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1); 
+      font-size: 12px; 
+      font-weight: 600;
       color: #ccc;
     }
 
-    /* Formulaire d'inscription */
+    /* Signup Form */
     .form-container {
-      max-width: 500px; margin: 0 auto; background: var(--card);
-      padding: 30px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);
+      max-width: 500px; 
+      margin: 0 auto; 
+      background: var(--card);
+      padding: 30px; 
+      border-radius: var(--radius); 
+      border: 1px solid rgba(255,255,255,0.05);
     }
-    .form-group { margin-bottom: 20px; text-align: left; }
-    label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: #ccc; }
-    input {
-      width: 100%; padding: 14px; border-radius: 8px;
-      background: #0a0a0c; border: 1px solid rgba(255,255,255,0.1);
-      color: white; font-family: 'Inter', sans-serif; transition: border 0.3s;
-    }
-    input:focus { outline: none; border-color: var(--accent-blue); box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); }
-    
-    footer { text-align: center; padding: 40px 0; color: var(--muted); font-size: 14px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 60px; }
 
+    .form-group { 
+      margin-bottom: 20px; 
+      text-align: left; 
+    }
+
+    label { 
+      display: block; 
+      font-weight: 600; 
+      margin-bottom: 8px; 
+      font-size: 14px; 
+      color: #ccc; 
+    }
+
+    input {
+      width: 100%; 
+      padding: 14px; 
+      border-radius: 8px;
+      background: #0a0a0c; 
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white; 
+      font-family: 'Inter', sans-serif; 
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus { 
+      outline: none; 
+      border-color: var(--accent-blue); 
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); 
+    }
+
+    .form-disclaimer {
+      font-size: 12px; 
+      color: var(--muted); 
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer { 
+      text-align: center; 
+      padding: 40px 0; 
+      color: var(--muted); 
+      font-size: 14px; 
+      border-top: 1px solid rgba(255,255,255,0.05); 
+      margin-top: 60px; 
+    }
+
+    footer .logo {
+      margin: 0 auto 15px; 
+      width: 30px; 
+      height: 30px; 
+      font-size: 14px;
+    }
+
+    footer p {
+      margin-top: 5px;
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
-      .grid-3 { grid-template-columns: 1fr; }
-      .menu { display: none; }
-      h1 { font-size: 32px; }
+      .grid-3 { 
+        grid-template-columns: 1fr; 
+      }
+
+      .menu { 
+        display: none; 
+      }
+
+      h1 { 
+        font-size: 32px; 
+      }
+
+      .hero {
+        padding: 60px 0 30px;
+      }
+
+      section {
+        padding: 40px 0;
+      }
+
+      .pricing-box {
+        padding: 30px 20px;
+      }
+
+      .form-container {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .kicker {
+        font-size: 11px;
+        padding: 5px 12px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .pay-icons {
+        gap: 10px;
+      }
+
+      .pay-tag {
+        font-size: 11px;
+        padding: 6px 12px;
+      }
+    }
+
+    /* Accessibility */
+    button:focus,
+    a:focus {
+      outline: 2px solid var(--accent-blue);
+      outline-offset: 2px;
+    }
+
+    /* Loading state */
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
   </style>
 </head>
@@ -191,11 +514,11 @@
         PyFastlane
       </div>
       <nav class="menu">
-        <a href="#programme">Programme</a>
-        <a href="#methode">La Méthode</a>
-        <a href="#tarifs">Abonnement</a>
+        <a href="#features">Features</a>
+        <a href="#method">Method</a>
+        <a href="#pricing">Pricing</a>
       </nav>
-      <a href="#inscription" class="btn btn-primary">Essai Gratuit</a>
+      <a href="#signup" class="btn btn-primary">Free Trial</a>
     </div>
   </header>
 
@@ -203,71 +526,100 @@
     <!-- HERO SECTION -->
     <section class="hero">
       <div class="container">
-        <div class="kicker">Apprendre à coder n'a jamais été aussi direct</div>
-        <h1>Maîtrise Python. <br><span>Construis ton indépendance.</span></h1>
+        <div class="kicker">Learn to code. No fluff. Just results.</div>
+        <h1>Master Python. <br><span>Build your independence.</span></h1>
         <p class="lead">
-          Pas de théorie inutile. Que du code concret pour créer des applications, automatiser des tâches et dominer la Data. Explore la plateforme gratuitement pendant 3 jours.
+          No useless theory. Only concrete code to create applications, automate tasks, and dominate data science. Explore the platform free for 3 days.
         </p>
         <div class="hero-actions">
-          <a href="#inscription" class="btn btn-primary">Commencer l'essai de 3 jours</a>
-          <a href="#programme" class="btn btn-ghost">Voir le programme</a>
+          <a href="#signup" class="btn btn-primary">Start Your Free 3-Day Trial</a>
+          <a href="#features" class="btn btn-ghost">View Curriculum</a>
         </div>
       </div>
     </section>
 
-    <!-- METHODE SECTION -->
-    <section id="programme">
+    <!-- FEATURES SECTION -->
+    <section id="features">
       <div class="container">
         <div class="section-header">
-          <h2>Pourquoi cette plateforme ?</h2>
-          <p>L'approche "Fastlane" : Vitesse, Exécution, Résultats.</p>
+          <h2>Why This Platform?</h2>
+          <p>The "Fastlane" approach: Speed, Execution, Results.</p>
         </div>
         <div class="grid-3">
           <div class="card">
             <div class="card-icon">🐍</div>
-            <h3>Les Fondations Pures</h3>
-            <p>Oublie les tutoriels soporifiques. Apprends la syntaxe, les variables, et la POO (Programmation Orientée Objet) par la pratique immédiate.</p>
+            <h3>Pure Foundations</h3>
+            <p>Forget boring tutorials. Learn syntax, variables, and OOP (Object-Oriented Programming) through immediate practice and real-world examples.</p>
           </div>
           <div class="card">
             <div class="card-icon">⚙️</div>
-            <h3>Automatisation Extreme</h3>
-            <p>Scraping web, manipulation de fichiers, bots. Apprends à écrire des scripts qui travaillent à ta place 24h/24.</p>
+            <h3>Extreme Automation</h3>
+            <p>Web scraping, file manipulation, bots. Learn to write scripts that work for you 24/7. Build productivity tools that solve real problems.</p>
           </div>
           <div class="card">
             <div class="card-icon">🚀</div>
-            <h3>Projets Réels</h3>
-            <p>Développe des API, des back-ends avec Django/FastAPI, et des analyses de données concrètes. Un portfolio prêt à l'emploi.</p>
+            <h3>Real-World Projects</h3>
+            <p>Build APIs, backends with Django/FastAPI, and concrete data analysis projects. Create a professional portfolio ready for employment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHOD SECTION -->
+    <section id="method">
+      <div class="container">
+        <div class="section-header">
+          <h2>How It Works</h2>
+          <p>Learn by doing. No lectures, only practice.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon">📚</div>
+            <h3>150+ HD Lessons</h3>
+            <p>Carefully curated video lessons covering everything from Python basics to advanced frameworks. Each lesson teaches a specific skill you can use immediately.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">💻</div>
+            <h3>Integrated Code Editor</h3>
+            <p>No setup required. Write and execute Python code directly in your browser. Practice instantly without installing anything on your computer.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>AI-Powered Feedback</h3>
+            <p>Get instant corrections on your exercises. Our AI reviews your code and provides personalized suggestions for improvement and best practices.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- PRICING SECTION -->
-    <section id="tarifs">
+    <section id="pricing">
       <div class="container">
         <div class="section-header">
-          <h2>Un accès complet. Sans engagement.</h2>
-          <p>Teste tout le catalogue sans risque. Décide ensuite.</p>
+          <h2>Complete Access. No Lock-In.</h2>
+          <p>Test everything risk-free. Decide after.</p>
         </div>
 
         <div class="pricing-box">
-          <div class="pricing-badge">Populaire</div>
-          <h3 style="margin: 0; color: var(--accent-blue); text-transform: uppercase; font-size: 16px;">Pass Illimité</h3>
-          <div class="price-amount">29€ <span>/ mois</span></div>
-          <p style="color: var(--muted); margin-top: 0;">Après tes 3 jours d'essai gratuit.</p>
+          <div class="pricing-badge">Popular</div>
+          <h3 style="margin: 0; color: var(--accent-blue); text-transform: uppercase; font-size: 16px;">Unlimited Pass</h3>
+          <div class="price-amount">$29 <span>/ month</span></div>
+          <p style="color: var(--muted); margin-top: 0;">After your free 3-day trial.</p>
           
           <ul class="features-list">
-            <li>Accès instantané à plus de 150 leçons vidéo HD</li>
-            <li>Environnement de code intégré (pas d'installation)</li>
-            <li>Correction par IA de tes exercices</li>
-            <li>Communauté privée Discord (Réseautage)</li>
-            <li>Certificat de complétion professionnel</li>
+            <li>Instant access to 150+ HD video lessons</li>
+            <li>Integrated code environment (no installation needed)</li>
+            <li>AI-powered exercise correction and feedback</li>
+            <li>Private Discord community for networking</li>
+            <li>Professional completion certificate</li>
+            <li>Lifetime access to course materials</li>
+            <li>Monthly live Q&A sessions with instructors</li>
           </ul>
 
           <div class="payment-methods">
-            <p>Moyens de paiement acceptés après l'essai</p>
+            <p>Payment Methods Accepted After Trial</p>
             <div class="pay-icons">
-              <span class="pay-tag">💳 Carte Bancaire</span>
+              <span class="pay-tag">💳 Credit Card</span>
               <span class="pay-tag">📱 Mobile Money</span>
               <span class="pay-tag">🅿️ PayPal</span>
             </div>
@@ -276,34 +628,59 @@
       </div>
     </section>
 
-    <!-- FORMULAIRE INSCRIPTION -->
-    <section id="inscription" style="border-bottom: none;">
+    <!-- SIGNUP SECTION -->
+    <section id="signup" style="border-bottom: none;">
       <div class="container" style="text-align: center;">
         <div class="section-header">
-          <h2>Prêt à changer de dimension ?</h2>
-          <p>Crée ton compte maintenant et débloque tes 3 jours gratuits.</p>
+          <h2>Ready to Level Up?</h2>
+          <p>Create your account now and unlock your free 3-day trial immediately.</p>
         </div>
 
         <div class="form-container">
-          <form id="signupForm">
+          <form id="signupForm" name="signupForm" method="POST" novalidate>
             <div class="form-group">
-              <label for="name">Nom complet</label>
-              <input type="text" id="name" placeholder="Ex: Jean Dupont" required>
+              <label for="fullName">Full Name</label>
+              <input 
+                type="text" 
+                id="fullName" 
+                name="fullName"
+                placeholder="John Doe" 
+                required
+                aria-required="true"
+              >
             </div>
+
             <div class="form-group">
-              <label for="email">Adresse Email</label>
-              <input type="email" id="email" placeholder="jean.dupont@email.com" required>
+              <label for="email">Email Address</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email"
+                placeholder="john.doe@example.com" 
+                required
+                aria-required="true"
+              >
             </div>
+
             <div class="form-group">
-              <label for="password">Mot de passe</label>
-              <input type="password" id="password" placeholder="••••••••" required>
+              <label for="password">Password</label>
+              <input 
+                type="password" 
+                id="password" 
+                name="password"
+                placeholder="•���••••••" 
+                required
+                minlength="8"
+                aria-required="true"
+              >
             </div>
             
             <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
-              Activer mes 3 Jours Gratuits
+              Activate My 3-Day Free Trial
             </button>
-            <p style="font-size: 12px; color: var(--muted); margin-top: 15px;">
-              En cliquant, tu seras redirigé vers notre portail sécurisé pour configurer ton mode de facturation (Carte, PayPal ou Mobile Money). <strong>Aucun prélèvement avant la fin des 3 jours.</strong>
+
+            <p class="form-disclaimer">
+              By clicking, you'll be redirected to our secure payment portal to set up your billing method (Credit Card, PayPal, or Mobile Money). <strong>No charges will be made until after your 3-day free trial ends.</strong> You can cancel anytime before the trial ends to avoid any charges.
             </p>
           </form>
         </div>
@@ -313,24 +690,94 @@
 
   <footer>
     <div class="container">
-      <div class="logo" style="margin: 0 auto 15px; width: 30px; height: 30px; font-size: 14px;">Py</div>
-      <div>© <span id="year"></span> PyFastlane. Tous droits réservés.</div>
-      <p style="margin-top: 5px;">Transformez votre temps libre en compétences monétisables.</p>
+      <div class="logo">Py</div>
+      <div>&copy; <span id="year"></span> PyFastlane. All rights reserved.</div>
+      <p>Transform your free time into monetizable skills.</p>
     </div>
   </footer>
 
   <script>
+    // Auto-update year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
+    // Form validation and submission
+    const signupForm = document.getElementById('signupForm');
+    
+    signupForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      const email = document.getElementById('email').value;
+      const fullName = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
       
-      // Simulation de redirection vers un portail de paiement type Stripe / PayPal / CinetPay
-      alert(`Félicitations ! Ton compte (${email}) est en cours de création.\n\nTu vas être redirigé vers la page de sécurité pour associer ton moyen de paiement (Carte Bancaire, Mobile Money ou PayPal).\n\nRappel : Tu as 3 JOURS GRATUITS pour tester Python !`);
-      
-      // window.location.href = "https://lien-vers-checkout-securise.com/trial";
+      // Client-side validation
+      if (!fullName || !email || !password) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      if (password.length < 8) {
+        alert('Password must be at least 8 characters long.');
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      // Disable submit button
+      const submitBtn = signupForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing...';
+
+      try {
+        // Simulated API call (replace with real endpoint)
+        const response = await fetch('/api/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            fullName,
+            email,
+            password
+          })
+        }).catch(() => {
+          // Fallback for demo purposes
+          throw new Error('Unable to connect. Please try again.');
+        });
+
+        if (!response || !response.ok) {
+          throw new Error('Signup failed. Please try again.');
+        }
+
+        const data = await response.json();
+        
+        alert(`Welcome, ${fullName}!\n\nYour trial account is being created.\n\nYou will be redirected to our secure payment portal to set up your billing method. No charges will be made during your 3-day free trial.`);
+        
+        // Redirect to checkout (uncomment when backend is ready)
+        // window.location.href = data.checkoutUrl || "https://checkout.pyfastlane.com/trial";
+        
+        signupForm.reset();
+      } catch (error) {
+        alert(`Error: ${error.message}`);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Activate My 3-Day Free Trial';
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
   </script>
 </body>
